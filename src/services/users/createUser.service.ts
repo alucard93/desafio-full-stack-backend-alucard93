@@ -3,13 +3,14 @@ import  User  from "../../entities/user.entity";
 import { IRegisterRequest, IRegisterResponse } from "../../interfaces/register";
 
 import { hash } from "bcryptjs";
+import { AppError } from "../../errors/appError";
 
 const createUserService = async ({ name, email, cellphone, password }: IRegisterRequest): Promise<User> => {
 
     const userRepository = AppDataSource.getRepository(User)
 
     if(!password) {
-        throw new Error('Password is missing')
+        throw new AppError('Password is missing')
     }
 
     const hashedPassword = await hash(password, 10)

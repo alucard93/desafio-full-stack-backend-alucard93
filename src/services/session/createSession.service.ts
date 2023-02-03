@@ -11,6 +11,9 @@ import { ISessionRequest } from "../../interfaces/session/sessions.interface";
 import { compare } from "bcryptjs";
 import jwt from 'jsonwebtoken'
 
+//error
+import { AppError } from "../../errors/appError";
+
 import 'dotenv/config'
 
 const createSessionService = async ({ email, password }: ISessionRequest): Promise<string> => {
@@ -22,13 +25,13 @@ const createSessionService = async ({ email, password }: ISessionRequest): Promi
     })
 
     if(!user) {
-        throw new Error('Invalid user or password')
+        throw new AppError('Invalid user or password', 401)
     }
 
     const passwordMatch = await compare(password, user.password)
 
     if(!passwordMatch) {
-        throw new Error('Invalid user or password')
+        throw new AppError('Invalid user or password', 401)
     }
 
     const token = jwt.sign({
