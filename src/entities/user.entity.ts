@@ -1,5 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn  } from "typeorm";
+//typeorm
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany  } from "typeorm";
+
+//express-async-error
 import { Exclude } from "class-transformer";
+
+//entity
+import Contact from "./contacts.entity";
 
 @Entity('users') // nome da tabela
 class User {  
@@ -31,6 +37,9 @@ class User {
 
     @UpdateDateColumn()
     updatedAt: Date
+
+    @OneToMany(() => Contact, contact => contact.user)
+    contact: Contact[]
 
 }
 
