@@ -10,8 +10,7 @@ const userDeleteService = async (id: string) => {
     if (!user) {
         throw new AppError("User not found!", 404);
     }
-        const newState = false;
-        await userRepository.update(user.id, { isActive: newState });
+        await userRepository.update(user.id, { isActive: false });
     
     return true;
 }
