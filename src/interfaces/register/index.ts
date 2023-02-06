@@ -4,7 +4,3 @@ export interface IRegisterRequest {
     cellphone: string,
     password: string,
 }
-
-export interface IRegisterResponse extends IRegisterRequest {
-    date_register?: string
-}

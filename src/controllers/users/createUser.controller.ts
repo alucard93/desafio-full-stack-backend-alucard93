@@ -7,7 +7,7 @@ const createUserController = async (request: Request, response: Response) => {
     const user: IRegisterRequest = request.body
     const createdUser = await createUserService(user) 
 
-    return response.json(instanceToPlain(createdUser))
+    return response.status(201).json(instanceToPlain(createdUser))
 }
 
 export default createUserController
