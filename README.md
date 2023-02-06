@@ -1,6 +1,6 @@
 
  
-### <h1 align="center">esafio-full-stack-backend-alucard93</h1>
+### <h1 align="center">Desafio-full-stack-backend-alucard93</h1>
 
 
 ## Install
@@ -9,20 +9,15 @@
 
 ## Configuração .env
 
-    Criar o arquivo .env e configurar como o .env.example
+    Criar o arquivo .env(na raiz senão irá ocorrer o erro SCRAM-SERVER-FIRST-MESSAGE: client password must be a string) e configurar como o .env.example
 
-## Migration
-
-    linux - sudo yarn typeorm migration:generate src/migrations/client -d src/data-source.ts
-
-    windows - yarn typeorm migration:generate src/migrations/client -d src/data-source.ts
 
 ## Migration Run
 
-    linux -  sudo api yarn typeorm migration:run -d src/data-source.ts
+    linux -  sudo yarn typeorm migration:run -d src/data-source.ts
 
-    windows - 
-
+    windows - yarn typeorm migration:run -d src/data-source.ts
+    
 ## Startar aplicação
 
     linux: -  sudo yarn dev
@@ -40,3 +35,13 @@
 * GET /contacts
 * PATCH /contacts/:id
 * DELETE /contacts/:id
+
+
+## Insonmia
+
+    O arquivo Insomnia_2023-02-05.json na raiz desse projeto é o modelo de request collection já com as request confeccionadas no insomnia para utilizá-lo basta:
+
+    * Vá na tela inicial do insonmia click em '+ create'
+    IMPORT FROM / + FILE escolha o Insomnia_2023-02-05.json
+
+    basta agora utilizar, Flw!
