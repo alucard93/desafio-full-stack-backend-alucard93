@@ -1,7 +1,6 @@
 export interface IRegisterRequest {
     name: string,
     email: string,
-    cellphone: number,
+    cellphone: string,
     password: string,
-    date_register: string
 }
