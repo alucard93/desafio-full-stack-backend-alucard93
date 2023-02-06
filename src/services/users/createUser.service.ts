@@ -1,6 +1,6 @@
 import  AppDataSource from "../../data-source";
 import  User  from "../../entities/user.entity";
-import { IRegisterRequest, IRegisterResponse } from "../../interfaces/register";
+import { IRegisterRequest } from "../../interfaces/register";
 
 import { hash } from "bcryptjs";
 import { AppError } from "../../errors/appError";
@@ -8,6 +8,14 @@ import { AppError } from "../../errors/appError";
 const createUserService = async ({ name, email, cellphone, password }: IRegisterRequest): Promise<User> => {
 
     const userRepository = AppDataSource.getRepository(User)
+    
+    const users = await userRepository.find();
+
+    const emailAlreadyExists = users.find(user => user.email === email);
+
+    if (emailAlreadyExists) {
+        throw new AppError('Email already exists');
+    }
 
     if(!password) {
         throw new AppError('Password is missing')
